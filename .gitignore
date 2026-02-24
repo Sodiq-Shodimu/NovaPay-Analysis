@@ -3,6 +3,10 @@
 .AppleDouble
 .LSOverride
 
+# Powerpoint files
+*.pptx
+*.ppt
+
 # Environment Variables
 .env
 .env.local
