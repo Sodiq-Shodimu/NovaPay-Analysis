@@ -3,6 +3,10 @@
 .AppleDouble
 .LSOverride
 
+# presentation file
+create_presentation.py
+presentation.py
+
 # Powerpoint files
 *.pptx
 *.ppt
