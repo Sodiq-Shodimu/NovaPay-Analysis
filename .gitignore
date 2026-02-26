@@ -3,6 +3,8 @@
 .AppleDouble
 .LSOverride
 
+# Project templates
+PROJECT_TEMPLATE.md
 # presentation file
 create_presentation.py
 presentation.py
@@ -36,6 +38,7 @@ build/
 
 # Jupyter
 .ipynb_checkpoints/
+
 
 # Data
 *.csv
