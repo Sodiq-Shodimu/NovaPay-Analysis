@@ -1,100 +1,48 @@
 # NovaPay Fraud Detection
 
-A machine learning project to detect fraudulent transactions in the NovaPay payment system using advanced classification models and interpretability analysis.
+I built an end-to-end machine learning fraud detection project that covered data preparation, feature engineering, model development, evaluation, and explainability.
 
-## Project Overview
+## Project Summary
 
-This project analyzes 10,780 transactions to build a robust fraud detection system. With a 9.10% fraud rate in the dataset, the goal is to identify fraudulent transactions while minimizing false positives that could block legitimate customers.
+- I analyzed 10,780 transactions with a 9.10% fraud rate.
+- I used a chronological 80/20 train-test split to reduce leakage risk.
+- I trained and compared Logistic Regression, Random Forest, XGBoost, and LightGBM models.
+- I used SHAP to explain model behavior and top fraud drivers.
 
-**Dataset:** 10,780 transactions | **Fraud Rate:** 9.10% | **Train/Test Split:** 80/20 (chronological)
+## Best Model Performance
 
-## Key Results
-
-The **Random Forest** model achieved the best performance:
+The Random Forest model performed best on the test set:
 
 | Metric | Score |
 |--------|-------|
-| **Precision** | 100% |
-| **Recall** | 92% |
-| **F1-Score** | 96% |
-| **ROC-AUC** | 0.975 |
-
-### Model Comparison
-
-| Model | Precision | Recall | F1-Score | ROC-AUC |
-|-------|-----------|--------|----------|---------|
-| Logistic Regression | 87% | 79% | 83% | 0.915 |
-| **Random Forest** | **100%** | **92%** | **96%** | **0.975** |
-| XGBoost | 95% | 92% | 94% | 0.968 |
-| LightGBM | 92% | 92% | 92% | 0.960 |
-
-## Top Fraud Indicators
-
-Based on SHAP analysis, the most important fraud signals are:
-
-1. **Risk Score Interval** - Primary fraud predictor
-2. **IP Risk Score** - External risk assessment
-3. **Transaction Velocity** - Number of transactions in short window
-4. **Transaction Amount** - Higher amounts correlate with fraud
-5. **Device Trust Score** - Device history and trust level
+| Precision | 100% |
+| Recall | 92% |
+| F1-Score | 96% |
+| ROC-AUC | 0.975 |
 
 ## Business Impact
 
-- **Fraud Prevention:** Catches 92% of fraudulent transactions with zero false positives on our test set
-- **Customer Experience:** 100% precision means legitimate transactions are never incorrectly blocked
-- **Model Reliability:** Achieves 97.5% ROC-AUC, indicating excellent discrimination ability
+- I achieved 100% precision, which avoided false-positive customer blocks in the test set.
+- I detected 92% of fraud cases, which improved risk coverage.
+- I delivered a strong ROC-AUC of 0.975, showing reliable fraud discrimination.
 
-## Technical Stack
+## End-to-End Scope Delivered
 
-- **Data Processing:** Python, Pandas, NumPy
-- **Machine Learning:** Scikit-learn, XGBoost, LightGBM
-- **Model Interpretability:** SHAP (SHapley Additive exPlanations)
-- **Visualization:** Matplotlib, Seaborn
-- **Version Control:** Git
+1. Data loading and quality checks
+2. Data cleaning and sanity validation
+3. EDA and feature engineering
+4. Model training and comparison
+5. Hyperparameter tuning
+6. SHAP explainability
+7. Model export for reuse
 
-## Feature Engineering
+## Tech Stack
 
-The model uses 28 engineered features:
+Python, Pandas, NumPy, Scikit-learn, XGBoost, LightGBM, SHAP, Matplotlib, Seaborn
 
-**Categorical Features (8):**
-- channel, kyc_tier, currency_x, currency_y, payment_type, account_type
+## Repository Files
 
-**Numeric Features (20):**
-- Transaction amounts, velocity metrics, risk scores, device trust, account age, IP risk indicators
-
-## Getting Started
-
-### Prerequisites
-```bash
-pip install pandas numpy scikit-learn xgboost lightgbm shap matplotlib seaborn jupyter
-```
-
-### Run Analysis
-1. Open `NovaPay.ipynb` in Jupyter Notebook or VS Code
-2. Execute cells to reproduce:
-   - Data cleaning and EDA
-   - Feature engineering
-   - Model training and evaluation
-   - SHAP interpretability analysis
-
-## Files
-
-- **NovaPay.ipynb** - Complete analysis pipeline with code and results
-- **nova_pay_combined.csv** - Original dataset (10,780 transactions)
-- **README.md** - This file
-- **FINAL_SUMMARY.md** - Comprehensive project report
-- **CONCISE_SUMMARY.md** - One-page executive summary
-
-## Key Insights
-
-- Transactions flagged by risk assessment systems have significantly higher fraud rates
-- Geographic diversity (multiple currencies, IPs) is a fraud signal
-- New accounts with high-value transactions are higher risk
-- Device trust score is a reliable fraud detector
-
-## Next Steps
-
-- Deploy Random Forest model to production
-- Monitor model performance with new transactions
-- Retrain periodically with updated data
-- Implement real-time fraud alerts using SHAP explanations
+- `NovaPay.ipynb` - Full end-to-end notebook workflow
+- `nova_pay_combined.csv` - Source dataset
+- `rf_model.joblib` - Trained Random Forest model
+- `shap_explainer_rf.joblib` - SHAP explainer artifact
